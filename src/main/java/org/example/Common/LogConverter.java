@@ -8,11 +8,12 @@ public class LogConverter {
         String[] lineas = input.split("\\|n\\|");
         System.out.println("Cantidad de líneas: "+lineas.length);
 
+        int contador = 1;
         for (String linea : lineas) {
-            String lineaOutput = "";
             if (linea.isEmpty()) {
                 continue;
             }
+            String lineaOutput = "\"" + (contador++) + "\",";
             // System.out.println("-->: "+linea);
             String[] columnas = linea.split("\\|~\\|");
 
