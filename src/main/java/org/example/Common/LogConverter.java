@@ -5,7 +5,8 @@ public class LogConverter {
     public static String convertLog(String input){
         String output = "";
 
-        String[] lineas = input.split("\\|n\\|");
+        input = input.replaceFirst("\\|n\\|", "");
+        String[] lineas = input.split("\n\\|n\\|");
         System.out.println("Cantidad de líneas: "+lineas.length);
 
         int contador = 1;
