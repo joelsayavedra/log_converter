@@ -1,0 +1,10 @@
+.label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.button {
+    font-size: 16px;
+    background-color: #007bff;
+    text-fill: white;
+}

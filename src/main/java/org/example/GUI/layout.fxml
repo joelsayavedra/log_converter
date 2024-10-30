@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.Controller" hgap="10" vgap="10">
+    <columnConstraints>
+        <ColumnConstraints minWidth="200" prefWidth="200" hgrow="ALWAYS"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="100" prefHeight="100" vgrow="ALWAYS"/>
+        <RowConstraints minHeight="100" prefHeight="100" vgrow="ALWAYS" />
+        <RowConstraints minHeight="50" prefHeight="50" />
+    </rowConstraints>
+
+    <TextArea fx:id="textArea1" promptText="Escribe tus logs" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TextArea fx:id="textArea2" promptText="Resultado" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+    <Button text="Enviar" GridPane.columnIndex="0" GridPane.rowIndex="2" onAction="#handleButtonClick" />
+</GridPane>
+
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextArea?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" spacing="10" fx:controller="org.example.Controller" alignment="CENTER" stylesheets="@style.css">
+    <Label fx:id="label" text="¡Conversor de plantillas!" />
+
+    <TextArea fx:id="textArea1" promptText="Escribe algo aquí..." prefHeight="100" prefWidth="300" wrapText="true" />
+    <TextArea fx:id="textArea2" promptText="Tu resultado estará acá" prefHeight="100" prefWidth="300" wrapText="true" editable="false"/>
+
+    <Button fx:id="button" text="Haz clic aquí" onAction="#handleButtonClick" />
+</VBox> -->
