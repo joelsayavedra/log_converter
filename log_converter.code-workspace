@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.formatOnSave": false,
+		"editor.formatOnPaste": false,
+		// Customizations
+		"editor.rulers": [
+			80,
+			100,
+			120
+		],
+		"window.autoDetectColorScheme": false,
+		"window.titleSeparator": " ✨✨✨ ",
+		"window.zoomLevel": 0,
+		"workbench.colorCustomizations": {
+			"titleBar.activeForeground": "#000000",
+			"titleBar.inactiveForeground": "#000000",
+			"titleBar.activeBackground": "#ffffff",
+			"titleBar.inactiveBackground": "#ffffff",
+			"editorRuler.foreground": "#ffffff50"
+		},
+		"editor.tokenColorCustomizations": {
+			"textMateRules": [
+				{
+					"scope": "comment.block.documentation",
+					"settings": {
+						"foreground": "#cf4444"
+					}
+				}
+			]
+		}
+	}
+}

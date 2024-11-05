@@ -1,12 +1,16 @@
 package org.example.Common;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+
 public class LogConverter {
     
     public static String convertLog(String input){
         String output = "";
 
         input = input.replaceFirst("\\|n\\|", "");
-        String[] lineas = input.split("\n\\|n\\|");
+        String[] lineas = input.split("\r\n\\|n\\|");
         System.out.println("Cantidad de líneas: "+lineas.length);
 
         int contador = 1;
@@ -20,7 +24,8 @@ public class LogConverter {
 
             for (int i = 0; i < columnas.length; i++) {
                 String columna = columnas[i];
-                String columnaOutput = "\""+columna+"\"";
+                columna = columna.replaceAll("\"","\"\""); // Escapa commillas dobles
+                String columnaOutput = "\""+columna+"\""; // Escapa saltos de línea y comas
                 lineaOutput+=columnaOutput;
                 if (i!=columnas.length-1) {
                     lineaOutput+=",";
@@ -34,16 +39,21 @@ public class LogConverter {
     }
 
     public static void main(String[] args) {
-        String file = "|n|2024-10-30 00:07:02.201|~|DEBUG|~|org.example.Common.PropertiesManager.PropertiesManager|~|getProperties|~|PropertiesManager.java:87|~|AWT-EventQueue-0|~|Directorio creado con éxito, MENSAJE CON COMA.\r\n" + //
-                        "|n|2024-10-30 00:07:02.201|~|WARN |~|org.example.Common.PropertiesManager.PropertiesManager|~|getProperties|~|PropertiesManager.java:96|~|AWT-EventQueue-0|~|Archivo general.properties creado exitosamente.\r\n" + //
-                        "|n|2024-10-30 00:07:02.202|~|INFO |~|org.example.Common.PropertiesManager.PropertiesManager|~|getProperties|~|PropertiesManager.java:106|~|AWT-EventQueue-0|~|Cargando archivo de configuración: general.properties";
-
+        String sourceFilePath = "C:/Users/JEST/Downloads/TicketEstandar.log";
+        String targetFilePath = sourceFilePath.replace(".log", ".csv");
 
         // LogConverter.convertLog(file);
-
-
-        System.out.println("\n\nLOG:\n");
-        System.out.println(LogConverter.convertLog(file));
-        System.out.println("\n\n");
+        try {
+            // Leer el archivo de origen en UTF-8
+            String content = new String(Files.readAllBytes(Paths.get(sourceFilePath)), StandardCharsets.UTF_8);
+            String result = LogConverter.convertLog(content);
+            
+            // Escribir el contenido en el archivo de destino
+            Files.write(Paths.get(targetFilePath), result.getBytes(StandardCharsets.UTF_8));
+            // System.out.println("Contenido\n\n"+result+"\n\n");
+            System.out.println("Contenido copiado exitosamente a: " + targetFilePath);
+        } catch (IOException e) {
+            System.out.println("Error al manejar el archivo: " + e.getMessage());
+        }
     }
 }
